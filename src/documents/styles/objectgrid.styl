@@ -60,16 +60,14 @@ dbl-gutter()
 	padding-right gutter
 	padding-left gutter
 
-
-
 inner-b-gutter()
 	> *
 		padding-bottom gutter
 
-b-gutter()
+.b-gutter
 	padding-bottom gutter
 
-t-gutter()
+.t-gutter
 	padding-top gutter
 
 col(num, wrap)
@@ -92,7 +90,7 @@ col(num, wrap)
 
 
 [class*='col-']
-	col(wrap: '', center, inner-b-gutter, dbl-gutter, no-gutter, b-gutter, t-gutter)
+	col(wrap: '', center, inner-b-gutter, dbl-gutter, no-gutter)
 
 
 .t_show
@@ -120,7 +118,7 @@ col(num, wrap)
 			col-width(num)
 
 	[class*='t_col-']
-		col(wrap:'t_', center, inner-b-gutter, dbl-gutter, no-gutter, b-gutter, t-gutter)
+		col(wrap:'t_', center, inner-b-gutter, dbl-gutter, no-gutter)
 
 
 
@@ -147,4 +145,4 @@ col(num, wrap)
 			col-width(num)
 
 	[class*='t_col-']
-		col(wrap:'p_', center, inner-b-gutter, dbl-gutter, no-gutter, b-gutter, t-gutter)
+		col(wrap:'p_', center, inner-b-gutter, dbl-gutter, no-gutter)

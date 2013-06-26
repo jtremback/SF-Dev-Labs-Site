@@ -1,4 +1,5 @@
 @import "objectgrid"
+@import "orbit"
 
 serif-font = "Merriweather", serif 
 sans-font = "Open Sans", sans-serif
@@ -6,12 +7,14 @@ sans-font = "Open Sans", sans-serif
 bottomborder = .08em solid #333
 
 offwhite = #fefefe
+offblack = #333
+lightgray = #ccc
+brand = #358FFF
 
 offwhite-grad()
 	background-color #efefef
 	background-image linear-gradient(0deg, #fff, #efefef) 
 
-offblack = #333
 
 
 
@@ -77,10 +80,10 @@ strong
 	font-weight: 700
 
 hr
-	margin: 1em 0
-	height: .2em
+	margin gutter 0
+	height: 1px
 	border: none
-	background: #333
+	background: lightgray
 
 h1, h2, h3, h4, h5, h6
 	font-family sans-font
@@ -107,13 +110,13 @@ h5, h6
 	font-size: 1em
 
 a
-	color: #1E62BF
+	color: brand
 	text-decoration: none !important
 	&:visited
-		color: #355B8F
+		color: #7B56FF
 		text-decoration: none !important
 	&:hover, &:active
-		color: #0A3A7C
+		color: darken(brand, 10%)
 
 img
 	width: 100%
@@ -139,13 +142,16 @@ img
 .large-text
 	font-size 1.5em
 
+.no-marg 
+	margin 0
+
 .no-t-marg
 	margin-top 0
 
 .main
 	margin-top gutter * 2
 	padding-top gutter
-	border 1px solid #ddd
+	border 1px solid lightgray
 	background offwhite
 
 #bgfx
@@ -161,6 +167,47 @@ img
 		position: absolute
 		height: 100%
 
+input, textarea
+	font-family inherit
+	line-height 1.5
+	padding 0 .2em
+	font-size 20px
+	width 100%
+	border 1px solid lightgray
+	margin-bottom .5em
+	background white
+	max-width auto
+	&:focus
+		outline none
+		box-shadow inset 0 1px 2px lightgray
+		border-color brand
+
+.button
+	text-decoration none
+	display inline-block
+	cursor pointer
+	text-align center
+	background rgb(0, 0, 0)
+	border none
+	font-family inherit
+	line-height 1.5
+	font-size 1em
+	padding .5em 1em
+	color white
+
+.button.large
+	font-size 1.3em
+
+.skillrow
+	font-size 1.2em
+
+.tag
+	float left
+	white-space pre-line
+	background offblack
+	color white
+	padding .1em .5em
+	margin .2em
 
 ul.nolist
 	list-style-type none
@@ -170,26 +217,14 @@ ul.nolist
 		margin 0
 
 .navbar
-	font-family sans-font
-	font-size 1.25em
-	background #333
-	color white
-	font-weight 700
-	list-style-type none
-	a 
-		color inherit
+	text-align center
+	font-size 1.5em
 	._item
-		line-height .9
-		float left
-		padding gutter * .5
-		margin 0
-		i 
-			line-height inherit
-			width auto
-			padding-right gutter * .5
-		&.-active
-			color offblack
-			background white
+		border-left 1px solid lightgray
+		padding-left gutter
+		padding-right gutter
+		&:first-child
+			border-left none
 	&.-affixed
 		position fixed
 		top 0
@@ -226,7 +261,6 @@ ul.nolist
 	color: #333
 	position relative
 	margin-bottom gutter * 2
-	// border gutter * .5 solid offblack
 	._title
 		color white
 		background offblack
