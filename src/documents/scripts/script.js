@@ -23,6 +23,28 @@ ga('send', 'pageview');
 // })
 
 
+//MODAL
+//Activate
+$('*[data-modal-id]').on('click', function(){
+  var id = $(this).attr('data-modal-id'),
+  target = $('#' + id);
+  target.addClass('md-show');
+})
+
+//Dismiss
+$('.md-overlay, .md-modal').on('click', function(){
+  $(this).removeClass('md-show');
+})
+
+$('.md-close').on('click', function(){
+  $(this).parents('.modal-bg').removeClass('md-show');
+})
+
+$('.md-content').on('click', function(e){
+  e.stopPropagation();
+})
+
+
 
 //IMAGE ZOOM AND PAN
 var zoomNpan = function(zoom) {
@@ -52,6 +74,67 @@ var zoomNpan = function(zoom) {
   });
 }
 
+
+//SLIDESHOW
+$(function() {
+    var slide = $('#slideshow .slide'),
+        slideshow = $('#slideshow'),
+        counter = $('#slideshow .counter'),
+        index = 0, 
+        interval,
+
+        // This fades out the slide and counter with an old index, 
+        //fades in the one with a new index, and changes the old index to new.
+        slideChange = function (newIndex) {
+          //Really janky hack to stop page scrolling to top because of 
+          //slide being hidden momentarily and slide height not being explicit.
+          // height = slideshow.height();
+          // slideshow.height(height + 1);
+
+          counter.eq(index).removeClass("active");
+          slide.eq(index).removeClass("active");
+          slide.eq(index).fadeOut(function () {
+            counter.eq(newIndex).addClass("active");
+            slide.eq(newIndex).addClass("active");
+            
+            //Part of same janky hack as above.
+            // slideshow.height('auto');
+          });
+
+          index = newIndex;
+        }
+
+        //This calls the slideChange and sets the new index to the one ahead.
+        slideNext = function () {
+          slideChange((index + 1) % slide.length);
+        };
+
+        //This calls the slideChange and sets the new index to the one behind.
+        slidePrev = function () {
+          slideChange((index - 1) % slide.length);
+        };
+
+    //This stuff happens at the beginning and hides all slides except for the one at the index.
+    slide.eq(index).addClass("active");
+    counter.eq(index).addClass("active"); 
+
+    //This binds the next and previous to the arrows.
+    $('.slide-left').click(slidePrev);
+    $('.slide-right').click(slideNext);
+
+    //This calls the slide change to the index of the proper counter.
+    counter.click(function () {
+      slideChange(counter.index(this))
+    });
+
+    //This calls the slideChange on a set interval and also disables it on hover.
+    interval = setInterval(slideNext, 6740);
+    $('#slideshow').hover(function () {
+        clearInterval(interval);
+    }, function () {
+        interval = setInterval(slideNext, 6740);
+    });
+});
 
 
 //INITIALIZE

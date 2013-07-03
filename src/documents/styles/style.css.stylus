@@ -15,7 +15,12 @@ offwhite-grad()
 	background-color #efefef
 	background-image linear-gradient(0deg, #fff, #efefef) 
 
+darkbg()
+	background black
+	background-image linear-gradient(35deg, #004, #000)
 
+.darkbg
+	darkbg()
 
 
 //RESET
@@ -41,6 +46,7 @@ body
 	word-spacing: .15em
 	line-height: 1.5
 	color: offblack
+	background-image url('/images/tileflower_3.png')
 
 
 p, pre
@@ -112,11 +118,13 @@ h5, h6
 a
 	color: brand
 	text-decoration: none !important
+	cursor pointer
 	&:visited
-		color: #7B56FF
+		color: darken(brand, 30%)
 		text-decoration: none !important
 	&:hover, &:active
-		color: darken(brand, 10%)
+		color: darken(brand, 30%)
+		text-decoration underline !important
 
 img
 	width: 100%
@@ -148,9 +156,17 @@ img
 .no-t-marg
 	margin-top 0
 
+.semi-transp
+	opacity .85
+
+.gutter-space
+	height gutter
+
 .main
 	margin-top gutter * 2
+	margin-bottom @margin-top
 	padding-top gutter
+	padding-bottom @padding-top
 	border 1px solid lightgray
 	background offwhite
 
@@ -170,11 +186,12 @@ img
 input, textarea
 	font-family inherit
 	line-height 1.5
-	padding 0 .2em
-	font-size 20px
+	padding .2em .4em
+	font-size inherit
 	width 100%
 	border 1px solid lightgray
-	margin-bottom .5em
+	margin-top 0
+	margin-bottom gutter * .5
 	background white
 	max-width auto
 	&:focus
@@ -182,12 +199,13 @@ input, textarea
 		box-shadow inset 0 1px 2px lightgray
 		border-color brand
 
-.button
+.button, button
+	margin 0
 	text-decoration none
-	display inline-block
+	// display inline-block
 	cursor pointer
 	text-align center
-	background rgb(0, 0, 0)
+	darkbg()
 	border none
 	font-family inherit
 	line-height 1.5
@@ -200,6 +218,74 @@ input, textarea
 
 .skillrow
 	font-size 1.2em
+	// box-shadow 0 -10px 25px -10px rgba(black, .1), 0 10px 25px -10px rgba(black, .1)
+
+
+
+///SLIDESHOW
+#slideshow
+	margin-top gutter
+	display inline-block
+	position relative
+	width 100%
+	font-size .01px
+	border-bottom 1px solid lightgray
+
+.slide
+	display none
+	img 
+		width 100%
+	&.active
+		display block
+
+.slide-left, .slide-right
+	cursor pointer
+	width 0
+	height 0
+	// background black
+	position absolute
+	border inset gutter * .75
+
+.slide-left
+	top 50%
+	left gutter * -2
+	border-right-style solid
+	border-color transparent
+	border-right-color offblack
+
+.slide-right
+	top 50%
+	right gutter * -2
+	border-color transparent
+	border-left-style solid
+	border-left-color offblack
+
+.counterbox
+	position absolute 
+	top gutter * -1
+	right gutter * .5
+	text-align center
+	z-index 3
+
+.counter
+	display inline-block
+	border 1px solid offblack
+	border-radius 100px
+	height 20px
+	width 20px
+	margin 2.5px
+	background white
+	cursor pointer
+
+.counter:hover
+	border-width 2px
+	// box-shadow inset 1px 1px 6px rgba(0, 0, 0, .3)
+
+.counter.active
+	background offblack
+	// box-shadow inset 1px 1px 6px rgba(0, 0, 0, .3)
+
+
 
 .tag
 	float left
@@ -233,7 +319,7 @@ ul.nolist
 
 
 .logo
-	background black
+	darkbg()
 	position relative
 	padding-top 100%
 	.img 
@@ -278,6 +364,8 @@ ul.nolist
 	font-family sans-font
 	color white
 
+
+
 //IMAGE ZOOM AND PAN
 .zoom
 	position: relative
@@ -304,3 +392,50 @@ ul.nolist
 		.z_out
 			display: block
 
+
+.largea
+	height 10000px
+
+
+//MODAL WINDOW
+.md-modal
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	padding-top 10%
+	z-index 2000
+	visibility hidden
+	backface-visibility hidden
+	transform translateX(-50%) translateY(-50%)
+
+.md-content
+	max-width 500px
+	margin-left auto
+	margin-right auto
+	form
+		clearfix()
+		background offwhite
+		padding gutter * .5
+		margin-left gutter * .5
+		margin-right gutter * .5
+		border 1px solid lightgray
+
+.md-show
+	visibility visible
+	& ~ .md-overlay
+		opacity 1
+		visibility visible
+
+.md-overlay
+	position fixed
+	width 100%
+	height 100%
+	visibility hidden
+	top 0
+	left 0
+	z-index 1000
+	opacity 0
+	background rgba(offwhite, .9)
+	transition all 0.3s

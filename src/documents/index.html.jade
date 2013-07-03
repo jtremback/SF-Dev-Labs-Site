@@ -3,75 +3,101 @@ layout: "default"
 isPage: true
 ---
 
-.col-12-12.center.main
-	.col-4-12.b-gutter.p_col-12-12
-		.logo
-			.img
-				img(src="/images/logo_min1000.png")
+.main.col-12-12.center.no-gutter
+	.col-12-12
+		.col-4-12.b-gutter.p_col-12-12
+			.logo
+				.img
+					img(src="/images/logo_min1000.png")
 
-	.col-8-12.p_col-12-12
-		h1.no-t-marg We make web apps.
+		.col-8-12.p_col-12-12
+			h1.no-t-marg We make web apps.
 
-	.col-8-12.b-gutter.t_col-12-12
-		.large-text SF Dev Labs is a full-service node.js shop (design + code) that specializes in mobile-optimized web apps and content publishing.
+		.col-8-12.b-gutter.t_col-12-12
+			.large-text SF Dev Labs is a full-service node.js shop (design + code) that specializes in mobile-optimized web apps and content publishing.
 
-		.t-gutter
-			.button.large.pull-right Get Started
-
-	hr.col-12-12.no-marg
-
-	.skillrow.col-12-12.t-gutter
-	  .tag HTML/CSS
-	  .tag UI/UX Design
-	  .tag Javascript
-	  .tag node.js 
-	  .tag Python
-	  .tag Django
-	  .tag Express
-	  .tag Backbone
-	  .tag jQuery
-	  .tag API's 
-	  .tag Infographics
-	  .tag Product Videos
-	  .tag Wordpress
+			.t-gutter
+				.button.large.pull-right(data-modal-id="modal-1") Get Started
 
 	hr.col-12-12
 
-	.orbit.col-12-12
-		ul(data-orbit, data-options="animation_speed: 100; slide_number: false; stack_on_small: false;")
-			li
-				img(src='images/edward-snowden.jpg')
-				.orbit-caption Dolor sed sodales looting ut nisl airport non, tempor nisl. Tijuana suspendisse improvised explosive device nunc in, senectus euismod lacinia home grown morbi.
-			li
-				img(src='images/edward-snowden.jpg')
-				.orbit-caption Smart et morbi san diego, consequat failure or outage, morbi smuggling drug. Tristique eget, denial of service lorem typhoon laoreet airplane egestas. 
-			li
-				img.js-zoom(src='images/edward-snowden.jpg')
-				.orbit-caption Strain eget lorem virus euismod platea biological weapon sodales ligula law enforcement. Quis, vitae, elit, ac nisi border.
+	.skillrow.col-12-12
+		.tag HTML/CSS
+		.tag UI/UX Design
+		.tag Javascript
+		.tag node.js 
+		.tag Python
+		.tag Django
+		.tag Express
+		.tag Backbone
+		.tag jQuery
+		.tag API's 
+		.tag Infographics
+		.tag Product Videos
+		.tag Wordpress
 
 	hr.col-12-12
 
-	.profile.col-4-12
-	  .headshot
-	    img(src="images/jeff_headshot_crop.jpg")
-	    a.name(href="http://jenkinsj.com/resume.html") Jeff Jenkins
-	    .tagline Code
+	#slideshow
+		.counterbox
+			.counter
+			.counter
+			.counter
+		a.slide(href="http://slidek.com")
+			img(src='images/chronorenders_crop.png')
+		a.slide(href="http://jehantremback.com/#chronometer")
+			img(src='images/scoperenders_crop.png')
+		a.slide(href="http://io.biofab.org:5000/designs")
+			img.js-zoom(src='images/expdesignerrender_crop.png')
+		.slide-left
+		.slide-right
 
-	.profile.col-4-12
-	  .headshot
-	    img(src="images/eoin_headshot_crop.jpg")
-	    a.name(href="http://eoin.site44.com/") Eoin McMillan
-	    .tagline Business
+	.gutter-space
 
-	.profile.col-4-12
-	  .headshot
-	    img(src="images/jehan_headshot_crop.jpg")
-	    a.name(href="http://jehantremback.com/") Jehan Tremback
-	    .tagline Design
+	.col-12-12
+		.profile.col-4-12
+			.headshot
+				img(src="images/jeff_headshot_crop.jpg")
+				a.name(href="http://jenkinsj.com/resume.html") Jeff Jenkins
+				span  - Code
 
-    hr.col-12-12
+		.profile.col-4-12
+			.headshot
+				img(src="images/eoin_headshot_crop.jpg")
+				a.name(href="http://eoin.site44.com/") Eoin McMillan
+				span  - Business
 
-	.col-6-12
+		.profile.col-4-12
+			.headshot
+				img(src="images/jehan_headshot_crop.jpg")
+				a.name(href="http://jehantremback.com/") Jehan Tremback
+				span  - Design
+
+	hr.col-12-12
+
+	.col-12-12
+		.col-6-12
+			form(method="post", action="/jobrequestpost", enctype="multipart/form-data")
+			
+				input(type="hidden", name="_method", value="POST")
+
+				input(type='text', name="name", value="", placeholder='Your Name')
+
+				input(type='email', name="email", value="", placeholder='Email')
+
+				textarea(type='text', rows="5", name="body", placeholder='What can we help you with?')=""
+
+				button.button.pull-right(type='submit') Contact us
+
+		.col-6-12
+			img.semi-transp(src='images/responsive.png')
+			div.text-center We love all devices!
+
+	//- .largea
+
+
+#modal-1.md-modal.md-effect-1
+	.md-content
 		form(method="post", action="/jobrequestpost", enctype="multipart/form-data")
 		
 			input(type="hidden", name="_method", value="POST")
@@ -80,8 +106,7 @@ isPage: true
 
 			input(type='email', name="email", value="", placeholder='Email')
 
-			textarea(type='text', rows="5", name="body", placeholder='What can we help you with?')=""
+			textarea(type='text', rows="5", name="body", placeholder='What can we help you with?')
 
-			button.button.pull-right(type='submit') Contact us
-
-	.col-6-12 Shibby
+			button.button.pull-right.md-close(type='submit') Contact us
+.md-overlay
