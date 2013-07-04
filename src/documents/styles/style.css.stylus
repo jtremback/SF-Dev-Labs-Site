@@ -17,7 +17,7 @@ offwhite-grad()
 
 darkbg()
 	background black
-	background-image linear-gradient(35deg, #004, #000)
+	background-image linear-gradient(45deg, #004, #000)
 
 .darkbg
 	darkbg()
@@ -48,7 +48,6 @@ body
 	color: offblack
 	background-image url('/images/tileflower_3.png')
 
-
 p, pre
 	margin-bottom .75em
 
@@ -63,9 +62,36 @@ blockquote, q
 	quotes: none
 
 blockquote
-	&:before, &:after
+	// border-left 5px solid offblack
+	padding-left .75em
+	position relative
+	font-style italic
+	font-size 1.1em
+	&:before
+		content ''
+		position absolute
+		darkbg()
+		top .3em
+		left 0
+		bottom .3em
+		width .25em
+	&:after
 		content: ''
 		content: none
+
+// blockquote
+// 	font-style italic
+// 	position relative
+// 	&:before, &:after
+// 		font-size 2em
+// 		position absolute
+// 	&:before
+// 		content '\201C'
+// 		top: -0.2em;
+// 		left: -0.15em;
+
+// 	&:after
+// 		content '\201C'
 
 q
 	&:before, &:after
@@ -100,6 +126,7 @@ h1, h2, h3, h4, h5, h6
 	font-weight: 300
 
 
+
 h1
 	font-size: 3em
 
@@ -117,14 +144,20 @@ h5, h6
 
 a
 	color: brand
-	text-decoration: none !important
+	text-decoration: none 
 	cursor pointer
 	&:visited
 		color: darken(brand, 30%)
-		text-decoration: none !important
+		text-decoration: none 
 	&:hover, &:active
 		color: darken(brand, 30%)
-		text-decoration underline !important
+		text-decoration underline 
+
+
+a.no-link-style
+	color inherit !important
+	text-decoration inherit !important
+
 
 img
 	width: 100%
@@ -162,6 +195,13 @@ img
 .gutter-space
 	height gutter
 
+.darktext
+	darkbg()
+	color white
+	padding .25em .5em
+
+
+//MAIN CONTAINER
 .main
 	margin-top gutter * 2
 	margin-bottom @margin-top
@@ -366,6 +406,16 @@ ul.nolist
 
 
 
+//BLOG LISTING
+.blog-listing
+	._story
+		._details
+			font-weight bold
+			padding-top .65em
+			margin-bottom 1.2em
+
+
+
 //IMAGE ZOOM AND PAN
 .zoom
 	position: relative
@@ -438,4 +488,34 @@ ul.nolist
 	z-index 1000
 	opacity 0
 	background rgba(offwhite, .9)
-	transition all 0.3s
+	transition all 0.5s
+
+.md-effect-15
+	&.md-modal
+		-webkit-perspective 1300px
+		-moz-perspective 1300px
+		perspective 1300px
+	.md-content
+		-webkit-transform-style preserve-3d
+		-moz-transform-style preserve-3d
+		transform-style preserve-3d
+		-webkit-transform translateZ(100px) translateX(-30%) rotateY(90deg)
+		-moz-transform translateZ(100px) translateX(-30%) rotateY(90deg)
+		-ms-transform translateZ(100px) translateX(-30%) rotateY(90deg)
+		transform translateZ(100px) translateX(-30%) rotateY(90deg)
+		-webkit-transform-origin 0 100%
+		-moz-transform-origin 0 100%
+		transform-origin 0 100%
+		opacity 0
+		-webkit-transition all 0.2s
+		-moz-transition all 0.2s
+		transition all 0.2s
+
+.md-show
+	&.md-effect-15
+		.md-content
+			-webkit-transform translateZ(0px) translateX(0%) rotateY(0deg)
+			-moz-transform translateZ(0px) translateX(0%) rotateY(0deg)
+			-ms-transform translateZ(0px) translateX(0%) rotateY(0deg)
+			transform translateZ(0px) translateX(0%) rotateY(0deg)
+			opacity 1

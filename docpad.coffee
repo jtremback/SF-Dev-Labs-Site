@@ -1,4 +1,6 @@
 _ = require('underscore')
+moment = require('moment')
+# moment.lang('fr')
 categories = {}
 
 # Define the Configuration
@@ -13,63 +15,16 @@ docpadConfig = {
 
 	templateData:
 		site:
-			title: "Jehan's Portfolio"
-
-			categories: [
-				id: "web_apps"
-				name: "Web Apps"
-				default: "hypothesis"
-			,
-				id: "mobile_apps",
-				name: "Mobile Apps",
-				default: "scope"
-			,
-				id: "web_sites"
-				name: "Web Sites"
-				default: "eddan"
-			,
-				id: "id",
-				name: "Industrial",
-				default: "wbtm"
-			]
-
-			projects: [
-				slug: "hypothesis",
-				name: "Hypothesis",
-				frontpic: "hyp_main"
-			,
-				slug: "scope",
-				name: "Scope",
-				frontpic: "scope_main"
-			,
-				slug: "chronometer",
-				name: "Chronometer",
-				frontpic: "chronometer_main"
-			,
-				slug: "expdesigner",
-				name: "Expression Designer",
-				frontpic: "expdesigner_main"
-			,
-				slug: "sites",
-				name: "Web Sites",
-				frontpic: "sites_main"
-			]
-
-
+			title: "SF Dev Labs"
 
 		getPreparedTitle: -> if @document.title then "#{@document.title} | #{@site.title}" else "#{@site.title}"
 
-		# gets all pages in a certain category passed in
-		getPagesByCategory: (category) ->
-			@getCollection("html").findAllLive({category: category})
+		formatDate: (date,format='LLLL') -> return moment(date).format(format)
 
-		# turns root relative url to hash
-		rootRelHashify: (url) ->
-			regex = /\/([^.]*)/
-			result = regex.exec(url)
+		truncate: (string, length) -> return string.substring(0, length).split(" ").slice(0, -1).join(" ") + "..."
 
-			return "#" + result[1]
 }
 
 # Export the Configuration
 module.exports = docpadConfig
+ 
