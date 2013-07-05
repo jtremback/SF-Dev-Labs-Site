@@ -9,18 +9,18 @@ ga('send', 'pageview');
 
 
 
-// //TOPBAR AFFIX
-// var targetFromTop = $("#affix").offset().top; 
-// $(document).on("scroll", function() {
-//   if (Modernizr.mq('only all and (min-width: 767px)')) {
-//     var documentScroll = $(document).scrollTop();
-//     if (targetFromTop < (documentScroll)) {
-//       $("#affix").addClass('-affixed')
-//     } else {
-//       $("#affix").removeClass('-affixed')
-//     }
-//   }
-// })
+//TOPBAR AFFIX
+var targetFromTop = $("#affix").offset().top; 
+$(document).on("scroll", function() {
+  if (Modernizr.mq('only all and (min-width: 767px)')) {
+    var documentScroll = $(document).scrollTop();
+    if (targetFromTop < (documentScroll)) {
+      $("#affix").addClass('-affixed')
+    } else {
+      $("#affix").removeClass('-affixed')
+    }
+  }
+})
 
 
 //MODAL

@@ -6,7 +6,7 @@ title: "Blog"
 ---
 
 .main.col-12-12.center.no-gutter
-	.col-12-12
+	.col-12-12.b-gutter
 		.col-2-12.p_col-12-12
 			.logo
 				.img
@@ -14,11 +14,10 @@ title: "Blog"
 
 		.col-10-12.p_col-12-12
 			h1.no-t-marg The blog
-			!= partial('navbar')
 
-	hr.col-12-12
+	!= partial('navbar')
 
-	.blog-listing
+	.col-12-12.t-gutter.blog-listing
 		each page in getCollection('blog').toJSON()
 			.col-12-12.dbl-gutter._story
 				a.no-link-style(href='#{ page.url }')

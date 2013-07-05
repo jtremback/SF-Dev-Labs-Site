@@ -394,8 +394,14 @@ ul.nolist
 
 
 .navbar
-	// text-align center
+	padding-top gutter * .5
+	padding-bottom @padding-top
+	border-top 1px solid lightgray
+	border-bottom @border-top
+	// display inline-block
+	text-align center
 	font-size 1em
+	background inherit
 	._item
 		border-left 1px solid lightgray
 		padding-left 1em
@@ -404,10 +410,11 @@ ul.nolist
 			border-left none
 			padding-left 0
 	&.-affixed
+		border-top none
 		position fixed
 		top 0
 		z-index 1
-		width 100%
+		// width 97%
 
 .logo
 	darkbg()
