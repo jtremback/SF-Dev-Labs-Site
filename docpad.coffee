@@ -9,9 +9,12 @@ docpadConfig = {
 
 	collections:
 		portfolio: ->
-			@getCollection("html").findAllLive({relativeOutDirPath: 'portfolio'},[{order:1}])
+			@getCollection("html").findAllLive({relativeOutDirPath: 'portfolio'},[{order:1}]).on "add", (model) ->
+                model.setMetaDefaults({layout: "main", type:"project"})
+		
 		blog: ->
-			@getCollection("html").findAllLive({relativeOutDirPath: 'blog'},[{date:1}])
+			@getCollection("html").findAllLive({relativeOutDirPath: 'blog'},[{date:1}]).on "add", (model) ->
+                model.setMetaDefaults({layout: "main", type:"post"})
 
 	templateData:
 		site:
@@ -21,7 +24,8 @@ docpadConfig = {
 
 		formatDate: (date,format='LLLL') -> return moment(date).format(format)
 
-		truncate: (string, length) -> return string.substring(0, length).split(" ").slice(0, -1).join(" ") + "..."
+		truncate: (string, length) -> if string 
+			return string.substring(0, length).split(" ").slice(0, -1).join(" ") + "..."
 
 }
 

@@ -1,6 +1,5 @@
 ---
 layout: "default"
-isPage: true
 ---
 
 .main.col-12-12.center.no-gutter
@@ -40,17 +39,15 @@ isPage: true
 
 	hr.col-12-12
 
-	#slideshow
+	//- padding-top set aspect ratio
+	#slideshow(style="padding-top: 68%;")
 		.counterbox
-			.counter
-			.counter
-			.counter
-		a.slide(href="http://slidek.com")
-			img(src='images/chronometer_slide.png')
-		a.slide(href="http://jehantremback.com/#chronometer")
-			img(src='images/scope_slide.png')
-		a.slide(href="http://io.biofab.org:5000/designs")
-			img(src='images/expdesigner_slide.png')
+			each page in getCollection('portfolio').toJSON()
+				.counter
+		each page in getCollection('portfolio').toJSON()
+			a.slide(href="#{ page.url }")
+				img(src='/images/#{ page.slug }_slide.png')
+		
 		.slide-left
 		.slide-right
 
@@ -96,19 +93,3 @@ isPage: true
 			div.text-center We love all devices!
 
 	//- .largea
-
-
-#modal-1.md-modal.md-effect-15
-	.md-content
-		form(method="post", action="/jobrequestpost", enctype="multipart/form-data")
-		
-			input(type="hidden", name="_method", value="POST")
-
-			input(type='text', name="name", value="", placeholder='Your Name')
-
-			input(type='email', name="email", value="", placeholder='Email')
-
-			textarea(type='text', rows="5", name="body", placeholder='What can we help you with?')
-
-			button.button.pull-right.md-close(type='submit') Contact us
-.md-overlay

@@ -1,27 +1,13 @@
 ---
 layout: "main"
-category: "top"
-indexFor: "blog"
-title: "Blog"
+title: "The blog"
 ---
 
-.main.col-12-12.center.no-gutter
-	.col-12-12
-		.col-2-12.p_col-12-12.b-gutter
-			.logo
-				.img
-					img(src="/images/logo_min1000.png")
-
-		.col-10-12.p_col-12-12.b-gutter
-			h1.no-t-marg The blog
-
-	!= partial('navbar')
-
-	.col-12-12.t-gutter.blog-listing
-		each page in getCollection('blog').toJSON()
-			.col-12-12._story
-				a.no-link-style(href='#{ page.url }')
-					h2._title.darktext
-						span !{ page.title }
-					._details !{ page.author } - !{ formatDate(page.display_date, 'LL') }
-					blockquote._excerpt !{ truncate(page.excerpt, 350) }
+.blog-listing
+	each page in getCollection('blog').toJSON()
+		._story
+			a.no-link-style(href='#{ page.url }')
+				h2._title.darktext
+					span !{ page.title }
+				._details !{ page.author } - !{ formatDate(page.display_date, 'LL') }
+				blockquote._excerpt !{ truncate(page.excerpt, 350) }

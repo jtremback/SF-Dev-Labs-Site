@@ -63,7 +63,7 @@ var zoomNpan = function(zoom) {
     $.pep.toggleAll(true);
 
     //Restore abs pos
-    img.css('position', 'absolute').pep();
+    img.css('position', 'absolute').pep().css('top', '0').css('left', '0');
   });
 
   z_out.on('click', function(e) {
@@ -135,6 +135,5 @@ $(function() {
 //INITIALIZE
 var init = function() {
   console.log("hello");
-  zoomNpan($(".js-zoom"))
-  $(document).foundation();
+  zoomNpan($(".zoom"))
 }();

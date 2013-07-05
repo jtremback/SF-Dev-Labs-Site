@@ -1,0 +1,14 @@
+#modal-1.md-modal.md-effect-15
+	.md-content
+		form(method="post", action="/jobrequestpost", enctype="multipart/form-data")
+		
+			input(type="hidden", name="_method", value="POST")
+
+			input(type='text', name="name", value="", placeholder='Your Name')
+
+			input(type='email', name="email", value="", placeholder='Email')
+
+			textarea(type='text', rows="5", name="body", placeholder='What can we help you with?')
+
+			button.button.pull-right.md-close(type='submit') Contact us
+.md-overlay

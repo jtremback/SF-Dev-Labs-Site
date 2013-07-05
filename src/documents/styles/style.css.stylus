@@ -134,7 +134,6 @@ h1, h2, h3, h4, h5, h6
 	line-height .9em
 	margin-top .5em
 	margin-bottom: .5em
-	font-weight: 300
 
 
 
@@ -227,6 +226,7 @@ img
 	padding-bottom @padding-top
 	border 1px solid lightgray
 	background offwhite
+	box-sizing content-box
 
 #bgfx
 	offwhite-grad()
@@ -299,6 +299,7 @@ input, textarea
 
 ///SLIDESHOW
 #slideshow
+	user-select: none
 	margin-top gutter
 	display inline-block
 	position relative
@@ -307,11 +308,14 @@ input, textarea
 	border-bottom 1px solid lightgray
 
 .slide
-	display none
+	overflow hidden
+	opacity 0
+	transition all .6s ease
+	absexpand()
 	img 
 		width 100%
 	&.active
-		display block
+		opacity 1
 
 .slide-left, .slide-right
 	cursor pointer
@@ -327,6 +331,8 @@ input, textarea
 	border-right-style solid
 	border-color transparent
 	border-right-color offblack
+	&:hover
+		border-left-color offblack
 
 .slide-right
 	top 50%
@@ -334,6 +340,8 @@ input, textarea
 	border-color transparent
 	border-left-style solid
 	border-left-color offblack
+	&:hover
+		border-left-color black
 
 .counterbox
 	position absolute 
@@ -351,6 +359,7 @@ input, textarea
 	margin 2.5px
 	background white
 	cursor pointer
+	transition all .6s ease
 
 .counter:hover
 	border-width 2px
@@ -499,6 +508,7 @@ ul.nolist
 			display: block
 			cursor: move 
 			width: auto !important
+			top: 0
 		.z_in
 			display: none
 		.z_out
