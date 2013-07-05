@@ -5,9 +5,23 @@ indexFor: "portfolio"
 title: "Portfolio"
 ---
 
-each page in getCollection('portfolio').toJSON()
-	.col-6-12.t_col-12-12.dbl-gutter
-		.polaroid
-			a(href='#{ page.url }')
-				h2._title !{ page.title }
-				img(src='images/#{ page.slug }_main.png')
+.main.col-12-12.center.no-gutter
+	.col-12-12
+		.col-2-12.p_col-12-12
+			.logo
+				.img
+					img(src="/images/logo_min1000.png")
+
+		.col-10-12.p_col-12-12
+			h1.no-t-marg Our portfolio
+			!= partial('navbar')
+
+	hr.col-12-12
+
+	.col-12-12.no-gutter.port-listing
+		each page, i in getCollection('portfolio').toJSON()
+			div
+				a(href='#{ page.url }')
+					img(src='images/#{ page.slug }_banner.png')
+					h2._title.darktext !{ page.title }
+			hr

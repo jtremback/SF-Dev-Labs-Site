@@ -19,9 +19,20 @@ darkbg()
 	background black
 	background-image linear-gradient(45deg, #004, #000)
 
+lighterbg()
+	background offblack
+	background-image linear-gradient(45deg, brand, #004 60%, #000)
+
 .darkbg
+	background black
 	darkbg()
 
+absexpand()
+	position absolute
+	top 0
+	left 0
+	right 0
+	bottom 0
 
 //RESET
 *
@@ -70,7 +81,7 @@ blockquote
 	&:before
 		content ''
 		position absolute
-		darkbg()
+		lighterbg()
 		top .3em
 		left 0
 		bottom .3em
@@ -82,7 +93,7 @@ blockquote
 // blockquote
 // 	font-style italic
 // 	position relative
-// 	&:before, &:after
+// 	&:before, &:after 
 // 		font-size 2em
 // 		position absolute
 // 	&:before
@@ -198,8 +209,15 @@ img
 .darktext
 	darkbg()
 	color white
-	padding .25em .5em
+	padding .5em .5em
+	display inline-block
+	span
+		line-height 1em
 
+	// @media under-tablet
+	// 	background offblack
+	// 	box-shadow -20px 0 0 offblack
+	// 	box-shadow 20px 0 0 offblack
 
 //MAIN CONTAINER
 .main
@@ -245,13 +263,30 @@ input, textarea
 	// display inline-block
 	cursor pointer
 	text-align center
-	darkbg()
 	border none
 	font-family inherit
 	line-height 1.5
 	font-size 1em
 	padding .5em 1em
+	overflow hidden
 	color white
+	z-index 1
+	position relative
+	&:before
+		content ''
+		absexpand()
+		darkbg()
+		z-index -1
+	&:after
+		transition all 0.8s
+		content ''
+		absexpand()
+		lighterbg()
+		z-index -1
+		opacity .1
+	&:hover
+		&:after
+			opacity 1
 
 .button.large
 	font-size 1.3em
@@ -342,21 +377,37 @@ ul.nolist
 	li 
 		margin 0
 
+// .navbar
+// 	text-align center
+// 	font-size 1.5em
+// 	._item
+// 		border-left 1px solid lightgray
+// 		padding-left gutter
+// 		padding-right gutter
+// 		&:first-child
+// 			border-left none
+// 	&.-affixed
+// 		position fixed
+// 		top 0
+// 		z-index 1
+// 		width 100%
+
+
 .navbar
-	text-align center
-	font-size 1.5em
+	// text-align center
+	font-size 1em
 	._item
 		border-left 1px solid lightgray
-		padding-left gutter
-		padding-right gutter
+		padding-left 1em
+		padding-right 1em
 		&:first-child
 			border-left none
+			padding-left 0
 	&.-affixed
 		position fixed
 		top 0
 		z-index 1
 		width 100%
-
 
 .logo
 	darkbg()
@@ -409,9 +460,13 @@ ul.nolist
 //BLOG LISTING
 .blog-listing
 	._story
+		margin-bottom gutter * 2
+		._title
+			margin-top 0
 		._details
 			font-weight bold
-			padding-top .65em
+			font-size 1em
+			// padding-top .65ems
 			margin-bottom 1.2em
 
 
@@ -519,3 +574,19 @@ ul.nolist
 			-ms-transform translateZ(0px) translateX(0%) rotateY(0deg)
 			transform translateZ(0px) translateX(0%) rotateY(0deg)
 			opacity 1
+
+
+//PORTFOLIO LISTING
+.port-listing
+	a 
+		display block
+		position relative
+		img 
+			display block
+		._title
+			position absolute
+			top 0
+			left 0
+	hr:last-child
+		display none
+

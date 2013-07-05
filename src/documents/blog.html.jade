@@ -6,11 +6,23 @@ title: "Blog"
 ---
 
 .main.col-12-12.center.no-gutter
+	.col-12-12
+		.col-2-12.p_col-12-12
+			.logo
+				.img
+					img(src="/images/logo_min1000.png")
+
+		.col-10-12.p_col-12-12
+			h1.no-t-marg The blog
+			!= partial('navbar')
+
+	hr.col-12-12
+
 	.blog-listing
 		each page in getCollection('blog').toJSON()
 			.col-12-12.dbl-gutter._story
 				a.no-link-style(href='#{ page.url }')
-					h2._title 
-						span.darktext !{ page.title }
+					h2._title.darktext
+						span !{ page.title }
 					._details !{ page.author } - !{ formatDate(page.display_date, 'LL') }
 					blockquote._excerpt !{ truncate(page.excerpt, 350) }

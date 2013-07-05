@@ -93,13 +93,8 @@ $(function() {
 
           counter.eq(index).removeClass("active");
           slide.eq(index).removeClass("active");
-          slide.eq(index).fadeOut(function () {
-            counter.eq(newIndex).addClass("active");
-            slide.eq(newIndex).addClass("active");
-            
-            //Part of same janky hack as above.
-            // slideshow.height('auto');
-          });
+          counter.eq(newIndex).addClass("active");
+          slide.eq(newIndex).addClass("active");
 
           index = newIndex;
         }
