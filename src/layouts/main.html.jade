@@ -4,12 +4,12 @@ layout: 'default'
 
 .main.col-12-12.center.no-gutter
 	.col-12-12
-		.col-2-12.p_col-12-12.b-gutter
+		.col-2-12.t_col-3-12.p_col-12-12.b-gutter
 			.logo
 				.img
 					img(src="/images/logo_min1000.png")
 
-		.col-10-12.p_col-12-12.b-gutter
+		.col-10-12.t_col-9-12.p_col-12-12.b-gutter
 			h1.no-t-marg !{ document.title }
 			if document.type == "post"
 				strong !{ document.author } - !{ formatDate(document.display_date, 'LL') }
@@ -21,5 +21,10 @@ layout: 'default'
 		.col-12-12.no-gutter.t-gutter
 			.zoom
 				img(src="/images/#{ document.slug }_main.png")
-	.col-12-12.dbl-gutter.t-gutter
-		!= content
+
+		.col-12-12.dbl-gutter.t-gutter
+			!= content
+
+	else
+		.col-12-12.no-gutter.t-gutter
+			!= content

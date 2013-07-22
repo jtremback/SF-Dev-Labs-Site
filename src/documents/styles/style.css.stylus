@@ -411,6 +411,8 @@ ul.nolist
 	text-align center
 	font-size 1em
 	background inherit
+	z-index 4
+	position relative
 	._item
 		border-left 1px solid lightgray
 		padding-left 1em

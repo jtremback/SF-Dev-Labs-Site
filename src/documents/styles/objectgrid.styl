@@ -47,50 +47,15 @@ for num in 1..number-of-columns
 		col-width(num)
 
 
-center()
-	float none
-	margin-left auto
-	margin-right auto
-	
-no-gutter()
-	padding-left 0
-	padding-right 0
-
-dbl-gutter()
-	padding-right gutter
-	padding-left gutter
-
-inner-b-gutter()
-	> *
-		padding-bottom gutter
-
-.b-gutter
-	padding-bottom gutter
-
-.t-gutter
-	padding-top gutter
-
-col(num, wrap)
+col()
 	padding-right gutter * .5
 	padding-left gutter * .5
 	float left
 	clearfix()
 
-	if num is a 'unit'
-		col-width(num)
-
-	if wrap is a 'string'
-		for arg in arguments
-			&.{wrap}{arg}
-				arg()
-
-	else
-		for arg in arguments
-			arg()
-
 
 [class*='col-']
-	col(wrap: '', center, inner-b-gutter, dbl-gutter, no-gutter)
+	col()
 
 
 .t_show
@@ -101,8 +66,6 @@ col(num, wrap)
 
 .p_show
 	display none
-
-
 
 
 @media under-tablet
@@ -116,10 +79,6 @@ col(num, wrap)
 	for num in 1..number-of-columns
 		.t_col-{num}-{number-of-columns}
 			col-width(num)
-
-	[class*='t_col-']
-		col(wrap:'t_', center, inner-b-gutter, dbl-gutter, no-gutter)
-
 
 
 @media only-tablet
@@ -144,5 +103,26 @@ col(num, wrap)
 		.p_col-{num}-{number-of-columns}
 			col-width(num)
 
-	[class*='t_col-']
-		col(wrap:'p_', center, inner-b-gutter, dbl-gutter, no-gutter)
+
+.center
+	float none
+	margin-left auto
+	margin-right auto
+	
+.no-gutter
+	padding-left 0
+	padding-right 0
+
+.dbl-gutter
+	padding-right gutter
+	padding-left gutter
+
+.inner-b-gutter
+	> *
+		padding-bottom gutter
+
+.b-gutter
+	padding-bottom gutter
+
+.t-gutter
+	padding-top gutter
