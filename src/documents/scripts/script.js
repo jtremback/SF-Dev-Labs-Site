@@ -45,6 +45,54 @@ $('.md-content').on('click', function(e){
 })
 
 
+//FORM SCRIPTS
+function validateEmail(email) { 
+    var regex = /@/;
+    return regex.test(email);
+}
+
+function validateForm(form) {
+  var honeypot = form.find('*[data-val="honey"]'),
+  requireds = form.find('*[data-val="required"]'),
+  notice = form.find('*[data-val="notice"]');
+
+  //Invalidate immediately if there are flies in the honey
+  var check = !honeypot.val().length;
+
+  requireds.each(function(){
+    $(this).removeClass('_wrong');
+    if ( !$(this).val().length ) {
+      check = false;
+      $(this).addClass('_wrong');
+      notice.text('Please fill all the required fields.');
+    }
+    if ( $(this).attr('type') === 'email' && !validateEmail($(this).val()) ) {
+      check = false;
+      $(this).addClass('_wrong');
+      notice.text('Please enter a valid email address.')
+    }
+  });
+
+  if ( check ) {
+    form.submit()
+  }
+
+}
+
+
+$('*[data-val="submit"]').on('click', function() {
+  validateForm($(this).parents('form'));
+});
+
+
+// (function() {
+//   if (window.location.search.match("?=jobrequestpost")) {
+//     $("#thanks-modal").addClass('md-show');
+//   }
+// })();
+
+
+
 
 //IMAGE ZOOM AND PAN
 var zoomNpan = function(zoom) {

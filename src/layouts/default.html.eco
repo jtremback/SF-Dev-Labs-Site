@@ -12,7 +12,17 @@
 	</head>
 	<body>
 		<%- @content %>
-		<%- @partial('contact-modal') %>
+		<div id="modal-1" class="md-modal md-effect-15">
+			<div class="md-content">
+				<%- @partial('contact.html.jade') %>
+			</div>
+		</div>
+		<div id="thanks-modal" class="md-modal md-effect-15">
+			<div class="md-content">
+				<div class="text-center large-text">Thanks for your interest. We'll be in touch soon!</div>
+			</div>
+		</div>
+		<div class="md-overlay"></div>
 		<%- @getBlock("scripts").add(["/vendor/jquery.js", "/vendor/pep.js", "/vendor/prism.js", "/scripts/script.js"]).toHTML() %>
 	</body>
 </html>

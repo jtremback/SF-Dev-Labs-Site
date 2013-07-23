@@ -9,7 +9,7 @@ docpadConfig = {
 
 	collections:
 		portfolio: ->
-			@getCollection("html").findAllLive({relativeOutDirPath: 'portfolio'},[{order:1}]).on "add", (model) ->
+			@getCollection("html").findAllLive({relativeOutDirPath: 'portfolio'},[{order:-1}]).on "add", (model) ->
                 model.setMetaDefaults({layout: "main", type:"project"})
 		
 		blog: ->
