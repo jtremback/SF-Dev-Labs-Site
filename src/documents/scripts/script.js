@@ -85,15 +85,6 @@ $('*[data-val="submit"]').on('click', function() {
 });
 
 
-// (function() {
-//   if (window.location.search.match("?=jobrequestpost")) {
-//     $("#thanks-modal").addClass('md-show');
-//   }
-// })();
-
-
-
-
 //IMAGE ZOOM AND PAN
 var zoomNpan = function(zoom) {
   zoom.append('<div class="toggle"><i class="icon-zoom-in z_in"></i><i class="icon-zoom-out z_out"></i></div>'),
@@ -183,5 +174,9 @@ $(function() {
 //INITIALIZE
 var init = function() {
   console.log("hello");
+  $('#contact-form').attr('action', window.location.pathname + '?=thanks')
+  if (window.location.search.match(/\?=thanks/)) {
+    $("#thanks-modal").addClass('md-show');
+  }
   zoomNpan($(".zoom"))
 }();

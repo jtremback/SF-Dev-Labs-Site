@@ -427,7 +427,7 @@ ul.nolist
 	text-align center
 	font-size 1em
 	background inherit
-	z-index 4
+	z-index 5
 	position relative
 	._item
 		border-left std-border
@@ -447,6 +447,7 @@ ul.nolist
 	darkbg()
 	position relative
 	padding-top 100%
+	display block
 	.img 
 		position absolute
 		top 15%
@@ -612,17 +613,20 @@ ul.nolist
 
 //PORTFOLIO LISTING
 .port-listing
+	z-index 1
 	a 
 		display block
 		position relative
+		color offblack
 		img 
 			display block
 		._title
 			position absolute
 			top 0
-			left 0
+			._inner
+				// display inline-block
+				padding .25em .5em
+				background rgba(white, .9)
 	hr:last-child
 		display none
 
-	.project
-		border-bottom std-border

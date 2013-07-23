@@ -5,7 +5,8 @@ title: "Our portfolio"
 
 .port-listing
 	each page, i in getCollection('portfolio').toJSON()
-		.project.b-gutter
-			h2.dbl-gutter.col-12-12.text-center !{ page.title }
-			a(href='#{ page.url }')
-				img(src='images/#{ page.slug }_banner.png')
+		a.b-gutter(href='#{ page.url }')
+			._title.text-center
+				h2.p_hide._inner !{ page.title }
+				h4.p_show._inner !{ page.title }
+			img(src='images/#{ page.slug }_banner.png')
