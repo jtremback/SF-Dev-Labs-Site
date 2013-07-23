@@ -1,4 +1,3 @@
-_ = require('underscore')
 moment = require('moment')
 # moment.lang('fr')
 categories = {}
