@@ -42,8 +42,8 @@ app.post('/', function(req, res, next){
 
  
 
-  res.setHeader('Location', 'http://localhost:9778/');
-  res.send('<meta http-equiv="refresh" content="0; url=http://localhost:9778/">');
+  res.setHeader('Location', 'http://sfdevlabs.com/');
+  res.send('<meta http-equiv="refresh" content="0; url=http://sfdevlabs.com/">');
 });
 
 if (!module.parent) {
